@@ -1,0 +1,224 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+@import url(http://fonts.googleapis.com/css?family=Merriweather:900);
+@import url(http://fonts.googleapis.com/css?family=Lato);
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #D3315F;
+  box-sizing: border-box; }
+
+body {
+  padding: 30px; }
+
+h1 {
+  font-family: 'Merriweather';
+  font-size: 35px;
+  color: #FF8DA1;
+  margin-bottom: 0.5em;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3); }
+
+p {
+  font-family: 'Lato';
+  font-size: 20px;
+  color: pink;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); }
+
+a {
+  text-decoration: none;
+  color: #793348;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.2); }
+  a:visited {
+    color: #552433; }
+  a:hover {
+    color: black; }
+
+.picker {
+  background: #FF8DA1;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: 0;
+  -webkit-box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  padding: 0.5em;
+  color: #222; }
+
+.calendar {
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 1em 0;
+  padding: 0.5em;
+  background: #FF8DA1;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  min-height: 100px;
+  -webkit-box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); }
+  .calendar .venues-wrapper {
+    padding: 0.5em;
+    padding-top: 2em;
+    overflow: hidden;
+    padding-right: 0;
+    margin-right: 0.5em; }
+  .calendar .venues {
+    background: rgba(255, 255, 255, 0.4);
+    position: relative; }
+  .calendar .venue {
+    height: 100px;
+    width: 1000%;
+    position: relative; }
+    .calendar .venue p.name {
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #222;
+      background: -webkit-linear-gradient(#D3315F, #c12954);
+      /* Chrome 10+, Saf5.1+ */
+      background: -moz-linear-gradient(#D3315F, #c12954);
+      /* FF3.6+ */
+      background: -ms-linear-gradient(#D3315F, #c12954);
+      /* IE10 */
+      background: -o-linear-gradient(#D3315F, #c12954);
+      /* Opera 11.10+ */
+      background: linear-gradient(#D3315F, #c12954);
+      /* W3C */
+      padding: 0.3em;
+      -webkit-border-bottom-right-radius: 3px;
+      -moz-border-bottom-right-radius: 3px;
+      -ms-border-bottom-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      text-shadow: none; }
+    .calendar .venue:nth-child(odd) {
+      background: rgba(255, 255, 255, 0.25); }
+  .calendar .slider-wrapper {
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0.5em;
+    height: 50px;
+    position: relative; }
+    .calendar .slider-wrapper .slider {
+      background: -webkit-linear-gradient(#2E4460, #293d56);
+      /* Chrome 10+, Saf5.1+ */
+      background: -moz-linear-gradient(#2E4460, #293d56);
+      /* FF3.6+ */
+      background: -ms-linear-gradient(#2E4460, #293d56);
+      /* IE10 */
+      background: -o-linear-gradient(#2E4460, #293d56);
+      /* Opera 11.10+ */
+      background: linear-gradient(#2E4460, #293d56);
+      /* W3C */
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      border-radius: 5px;
+      height: 50px;
+      width: 10%;
+      opacity: 0.6;
+      position: absolute;
+      cursor: move;
+      z-index: 20; }
+      .calendar .slider-wrapper .slider span {
+        background: #526D91;
+        border: 1px solid #1d2c3e;
+        width: 15px;
+        height: 15px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        -ms-border-radius: 7px;
+        border-radius: 7px;
+        color: #222;
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 5px; }
+      .calendar .slider-wrapper .slider span:first-child {
+        left: 0;
+        -webkit-transform: translate(-40%, -50%);
+        -moz-transform: translate(-40%, -50%);
+        -ms-transform: translate(-40%, -50%);
+        -o-transform: translate(-40%, -50%);
+        transform: translate(-40%, -50%); }
+      .calendar .slider-wrapper .slider span:last-child {
+        right: 0;
+        -webkit-transform: translate(40%, -50%);
+        -moz-transform: translate(40%, -50%);
+        -ms-transform: translate(40%, -50%);
+        -o-transform: translate(40%, -50%);
+        transform: translate(40%, -50%); }
+  .calendar .dates p {
+    width: 10%;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    float: left;
+    text-shadow: none; }
+  .calendar .dates p:last-child {
+    border: none; }
+  .calendar .times {
+    height: 100%;
+    position: absolute;
+    width: 1000%; }
+    .calendar .times .time {
+      height: 100%;
+      width: 0.41666666666%;
+      float: left;
+      margin-top: -25px;
+      border-left: 1px solid rgba(0, 0, 0, 0.3);
+      margin-left: -1px;
+      padding-bottom: 25px; }
+    .calendar .times span {
+      font-family: 'Lato';
+      font-size: 0.7vw;
+      height: 100%;
+      white-space: nowrap;
+      width: 100%;
+      margin-left: 10%; }
+
+/*# sourceMappingURL=fringe_calendar.css.map */

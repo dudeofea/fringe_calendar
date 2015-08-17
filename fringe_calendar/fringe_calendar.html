@@ -1,0 +1,59 @@
+<head>
+  <title>fringe_calendar</title>
+</head>
+
+<body class="background">
+  <h1>Unofficial Fringe Calendar</h1>
+  <p style="margin-bottom:1em">Select a venue to add it to the calendar.<br/> Click on the tag to remove it from the calendar</p>
+  {{> picker}}
+  {{> calendar}}
+  {{> acknowledgements}}
+</body>
+
+<template name="picker">
+	<select class="picker" id="picker">
+		<option value="0">Pick A Venue</option>
+		{{#each allVenues}}
+		<option value="{{id}}">{{name}}</option>
+		{{/each}}
+	</select>
+</template>
+
+<template name="calendar">
+	<div class="calendar">
+		<div class="venues-wrapper">
+			<div class="venues">
+				<div class="times">
+					{{#each allTimes}}
+					<div class="time">
+						<span>{{.}}</span>
+					</div>
+					{{/each}}
+				</div>
+				{{#each venues}}
+				<div class="venue">
+					<p class="name" data-id="{{id}}">{{name}}</p>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<div class="slider-wrapper">
+			<div class="slider">
+				<span slider-left style="margin-left:0">||</span>
+				<span slider-right>||</span>
+			</div>
+			<div class="dates">
+				{{#each allDates}}
+				<p>August {{.}}th</p>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="acknowledgements">
+	<p>Data courtesy of <a href="https://tickets.fringetheatre.ca/index.php">The Fringe</a></p>
+	<p>Thanks to <a href="http://www.colourlovers.com/palette/1496383/Jeans_n_Roses_1LP">Nim_design</a> for the colors</p>
+	<br/>
+	<br/>
+</template>
