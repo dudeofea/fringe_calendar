@@ -153,10 +153,16 @@ a {
 			padding: 0.3em;
 		    @include border-bottom-right-radius(3px);
 		    text-shadow: none;
+		    z-index: 10;
 		}
 		&:nth-child(odd) {
 			background: rgba(255,255,255,0.25);
 		}
+	}
+	.event {
+		background: $blue_2;
+		width: 1%;
+		position: absolute;
 	}
 	.slider-wrapper {
 		background: rgba(255,255,255,0.2);

@@ -1,4 +1,6 @@
 Venues = new Mongo.Collection('venues');
+Events = new Mongo.Collection('events');
+Times = new Mongo.Collection('times');
 
 if (Meteor.isClient) {
 	//calendar
@@ -148,10 +150,28 @@ if (Meteor.isClient) {
 			var name = $('#picker option:selected').text();
 			$(this).val(0);
 			if(id == 0){ return; }
+			//add events to venue
+			venue_events = [];
+			var events = Events.find({venue_id: id}).fetch();
+			var date_off = new Date('August 14 12:00 AM');
+			var date_scale = 100/(24*10);
+			for (var i = 0; i < events.length; i++) {
+				events[i]['times'] = [];
+				var times = Times.find({event_id: events[i]['id']}).fetch();
+				for (var j = 0; j < times.length; j++) {
+					//get start / end dates
+					var start = new Date('August '+times[j]['day']+' '+times[j]['time']);
+					var end = new Date(start.getTime() + events[i]['minutes']*60000);
+					//convert time range to margins / width
+					events[i]['margin_left'] = date_scale*(start.getTime() - date_off.getTime())/3600000;
+					venue_events.push(events[i]);
+				};
+			};
+			//add venue
 			if(venues[0]['id'] < 0){
-				venues = [{id: id, name: name}];
+				venues = [{id: id, name: name, venue_events: venue_events}];
 			}else{
-				venues.push({id: id, name: name});
+				venues.push({id: id, name: name, venue_events: venue_events});
 			}
 			Session.set('venues', venues);
 		});

@@ -40,7 +40,9 @@ class FringeSpider(scrapy.Spider):
 			self.events[ind]['img'] = response.css('.rso_venueEventsVenueTH_TOP img').xpath('@src').extract()[0]
 		except IndexError:
 			pass
-		#print "ID:", self.events[ind]['img']
+		#use first ticket link to get duration
+		link = 'https://tickets.fringetheatre.ca/'+response.css('#perfdateblock a').xpath('@href').extract()[0]
+		yield scrapy.Request(link, callback=self.parse_duration, meta={'id':ind})
 		#get dates / times
 		for d in response.css('#perfdateblock tr > td'):
 			t = {}
@@ -56,6 +58,13 @@ class FringeSpider(scrapy.Spider):
 			#print t
 			t['event_id'] = ind
 			self.times.append(t)
+
+	#get duration of times
+	def parse_duration(self, response):
+		ind = response.meta['id']
+		for h in response.css('.rso_venueEventsVenueTH_TOP'):
+			dur = h.xpath('//h2[@itemprop="duration"]/text()').extract()[0].split(' ')
+			self.events[ind]['minutes'] = int(dur[1])
 
 	def spider_closed(self, spider):
 		pass

@@ -33,6 +33,11 @@
 				{{#each venues}}
 				<div class="venue">
 					<p class="name" data-id="{{id}}">{{name}}</p>
+					{{#each venue_events}}
+					<div class="event" style="margin-left:{{margin_left}}%;">
+						<p>{{name}}</p>
+					</div>
+					{{/each}}
 				</div>
 				{{/each}}
 			</div>
