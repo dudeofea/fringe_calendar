@@ -132,7 +132,21 @@ a {
   .calendar .event {
     background: #526D91;
     width: 1%;
-    position: absolute; }
+    position: absolute;
+    height: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px; }
+    .calendar .event p {
+      font-size: 1vw;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 100px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin: 0 10px; }
   .calendar .slider-wrapper {
     background: rgba(255, 255, 255, 0.2);
     -webkit-border-radius: 5px;

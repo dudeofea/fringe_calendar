@@ -39,7 +39,9 @@ if (Meteor.isClient) {
 	var calendar_scale = 1.0;		//1.0 is 24h per 100%
 	//is passed the left and width in percent
 	var calendar_update = function(left, width){
-		console.log(left, width);
+		$('.slider').width(width+'%');
+		$('.slider').css('marginLeft', left+'%');
+		//console.log(left, width);
 		calendar_scale = width / 10;	//10 days total
 		//set scale
 		$('.times').width((1000 / calendar_scale)+'%');
@@ -103,7 +105,6 @@ if (Meteor.isClient) {
 				//bound
 				if(slider_width_rel < 2){ slider_width_rel = 2; }
 				if(slider_width_rel + slider_left_rel > 100){ slider_width_rel = 100 - slider_left_rel; }
-				$('.slider').width(slider_width_rel+'%');
 			}else if(slider_watch == "left"){
 				//get left
 				slider_left_abs = e.clientX - slider_mouse_off;
@@ -119,8 +120,6 @@ if (Meteor.isClient) {
 					slider_left_rel = 100*(slider_right_abs)/slider_bar_width - 2;
 					console.log(slider_left_rel);
 				}
-				$('.slider').width(slider_width_rel+'%');
-				$('.slider').css('marginLeft', slider_left_rel+'%');
 			}else if(slider_watch == "move"){
 				//get left
 				slider_left_abs = e.clientX - slider_mouse_off;
@@ -129,7 +128,6 @@ if (Meteor.isClient) {
 				slider_width_rel = 100*slider_width_abs / slider_bar_width;
 				if(slider_left_rel < 0){ slider_left_rel = 0; }
 				if(slider_left_rel + slider_width_rel > 100){ slider_left_rel = 100 - slider_width_rel; }
-				$('.slider').css('marginLeft', slider_left_rel+'%');
 			}
 			if(slider_watch != ""){
 				calendar_update(slider_left_rel, slider_width_rel);
@@ -156,15 +154,20 @@ if (Meteor.isClient) {
 			var date_off = new Date('August 14 12:00 AM');
 			var date_scale = 100/(24*10);
 			for (var i = 0; i < events.length; i++) {
-				events[i]['times'] = [];
 				var times = Times.find({event_id: events[i]['id']}).fetch();
 				for (var j = 0; j < times.length; j++) {
 					//get start / end dates
 					var start = new Date('August '+times[j]['day']+' '+times[j]['time']);
 					var end = new Date(start.getTime() + events[i]['minutes']*60000);
 					//convert time range to margins / width
-					events[i]['margin_left'] = date_scale*(start.getTime() - date_off.getTime())/3600000;
-					venue_events.push(events[i]);
+					var new_event = {};
+					new_event['name'] = events[i]['name'];
+					new_event['day'] = times[j]['day'];
+					new_event['time'] = times[j]['time'];
+					new_event['minutes'] = events[i]['minutes'];
+					new_event['margin_left'] = date_scale*(start.getTime() - date_off.getTime())/3600000;
+					new_event['width'] = date_scale*(end.getTime() - start.getTime())/3600000;
+					venue_events.push(new_event);
 				};
 			};
 			//add venue
